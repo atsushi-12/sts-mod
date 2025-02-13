@@ -87,6 +87,7 @@
                                     <artifact>watdis:WatDis</artifact>
                                 </filter>
                             </filters>
+                            <release>8</release>
                         </configuration>
                     </execution>
                 </executions>

@@ -1,0 +1,10 @@
+{
+  "stsmodstudy:TestRelic": {
+    "NAME": "Relic Name",
+    "FLAVOR": "Flavor Text",
+    "DESCRIPTIONS": [
+      "Description text. Note that 'S' makes it plural. When inserting variables into the description, split the text and place them in between."
+    ]
+
+    }
+}

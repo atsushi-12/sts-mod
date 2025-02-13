@@ -2,5 +2,14 @@
   "stsmodstudy:Flare": {
     "NAME": "warrior",
     "DESCRIPTION": "description"
-  }
+  },
+  "stsmodstudy:TestAttack": {
+    "NAME": "card-name",
+    "DESCRIPTION": "descriptionOfCard"
+    },
+    "stsmodstudy:TestPower": {
+  "NAME": "Gold Boost",
+  "DESCRIPTION": "Gain [E] at the end of combat."
 }
+  }
+

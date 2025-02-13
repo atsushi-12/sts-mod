@@ -1,3 +1,5 @@
+package stsmodstudy.cards;
+
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -11,10 +13,10 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import basemod.abstracts.CustomCard;
 
-// ƒJ[ƒh‚ÍCustomCardƒNƒ‰ƒX‚ğŒp³‚µ‚Ä’è‹`‚·‚é
+// ï¿½Jï¿½[ï¿½hï¿½ï¿½CustomCardï¿½Nï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½pï¿½ï¿½ï¿½ï¿½ï¿½Ä’ï¿½`ï¿½ï¿½ï¿½ï¿½
 public class Flare extends CustomCard {
     public static final String ID = "stsmodstudy:Flare";
-    // getCardStrings‚Å MainƒNƒ‰ƒX‚É‚Ä“Ç‚İ‚ñ‚¾ cards-JPN.json “à‚Ì•¶š—ñî•ñ‚ğæ“¾‚·‚é
+    // getCardStringsï¿½ï¿½ Mainï¿½Nï¿½ï¿½ï¿½Xï¿½É‚Ä“Ç‚İï¿½ï¿½ï¿½ cards-JPN.json ï¿½ï¿½ï¿½Ì•ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
     private static CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -32,31 +34,31 @@ public class Flare extends CustomCard {
                 AbstractCard.CardRarity.COMMON,
                 AbstractCard.CardTarget.ENEMY);
         this.magicNumber = this.baseMagicNumber = VULNERABLE_AMT;
-        this.damage=this.baseDamage = ATTACK_DMG;
-        
+        this.damage = this.baseDamage = ATTACK_DMG;
+
         this.setBackgroundTexture("assets/img/relics/BursterCore.png", "assets/img/relics/BursterCore.png");
         this.setBannerTexture("assets/img/relics/BursterCore.png", "assets/img/relics/BursterCore.png");
     }
 
-    // ƒJ[ƒhg—p‚É”­“®‚·‚éŒø‰Ê
+    // ï¿½Jï¿½[ï¿½hï¿½gï¿½pï¿½ï¿½ï¿½É”ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // ƒ_ƒ[ƒW‚ğ—^‚¦‚é
+        // ï¿½_ï¿½ï¿½ï¿½[ï¿½Wï¿½ï¿½^ï¿½ï¿½ï¿½ï¿½
         AbstractDungeon.actionManager.addToBottom(
-            new com.megacrit.cardcrawl.actions.common.DamageAction(
-                m,
-                new DamageInfo(p, this.damage, this.damageTypeForTurn),
-                AbstractGameAction.AttackEffect.SLASH_DIAGONAL) // ‰æ–ÊŒø‰Ê
+                new com.megacrit.cardcrawl.actions.common.DamageAction(
+                        m,
+                        new DamageInfo(p, this.damage, this.damageTypeForTurn),
+                        AbstractGameAction.AttackEffect.SLASH_DIAGONAL) // ï¿½ï¿½ÊŒï¿½ï¿½ï¿½
         );
-        // Æã‰»‚ğ‚©‚¯‚é
+        // ï¿½Æã‰»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         AbstractDungeon.actionManager.addToBottom(
-            new ApplyPowerAction(                                // ƒoƒt/ƒfƒoƒt‚Í‚·‚×‚Ä“à•”“I‚É‚Íƒpƒ[ˆµ‚¢
-                m,
-                p,
-                new VulnerablePower(m, this.magicNumber, false), // Æã‚ğm(=“G)‚É‚©‚¯‚é
-                this.magicNumber,
-                true,
-                AbstractGameAction.AttackEffect.NONE)            // ‰æ–ÊŒø‰Ê
+                new ApplyPowerAction( // ï¿½oï¿½t/ï¿½fï¿½oï¿½tï¿½Í‚ï¿½ï¿½×‚Ä“ï¿½ï¿½ï¿½ï¿½Iï¿½É‚Íƒpï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½
+                        m,
+                        p,
+                        new VulnerablePower(m, this.magicNumber, false), // ï¿½Æï¿½ï¿½m(=ï¿½G)ï¿½É‚ï¿½ï¿½ï¿½ï¿½ï¿½
+                        this.magicNumber,
+                        true,
+                        AbstractGameAction.AttackEffect.NONE) // ï¿½ï¿½ÊŒï¿½ï¿½ï¿½
         );
     }
 
@@ -65,7 +67,7 @@ public class Flare extends CustomCard {
         return new Flare();
     }
 
-    // ƒJ[ƒhƒAƒbƒvƒOƒŒ[ƒh‚Ìˆ—
+    // ï¿½Jï¿½[ï¿½hï¿½Aï¿½bï¿½vï¿½Oï¿½ï¿½ï¿½[ï¿½hï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
     @Override
     public void upgrade() {
         if (!this.upgraded) {

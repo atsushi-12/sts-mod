@@ -1,35 +1,92 @@
 import basemod.BaseMod;
-import basemod.interfaces.EditCardsSubscriber;
-import basemod.interfaces.EditStringsSubscriber;
+import basemod.interfaces.*;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.core.Settings;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.localization.CharacterStrings;
+import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.localization.PowerStrings;
+import stsmodstudy.relics.*;
+import stsmodstudy.cards.Flare;
+import stsmodstudy.patches.*;
+import stsmodstudy.patches.AbstractCardEnum;
 
 @SpireInitializer
 public class Main implements
-  EditCardsSubscriber,   // ƒJ[ƒh‚ğ’Ç‰Á‚·‚éê‡‚Éimplement‚·‚é
-  EditStringsSubscriber  // Œ¾Œêƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚Şê‡‚É implement‚·‚é
-{
+        PostInitializeSubscriber,
+        EditCardsSubscriber,
+        EditRelicsSubscriber,
+        EditStringsSubscriber {
+    private static final Color EXAMPLE_COLOR_BG = CardHelper.getColor(100.0f, 50.0f, 50.0f);// ã‚«ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆé¸æŠã¨ã‹ã«å‡ºã¦ãã‚‹ã¨ãã®ãƒãƒ¼ã®èƒŒæ™¯ã®è‰²ã§ã™ã€‚
+    private static final String ATTACK_EXAMPLE = "assets/img/cards/bg_attack_512.png";// ã“ã®è¾ºã¯å¾Œã§èª¬æ˜ã—ã¾ã™
+    private static final String SKILL_EXAMPLE = "assets/img/cards/bg_skill_512.png";// ã¨ã‚Šã‚ãˆãšå¤‰æ•°åã‚’æ›¸ã„ã¦ãã ã•ã„
+    private static final String POWER_EXAMPLE = "assets/img/cards/bg_power_512.png";
+    private static final String ENERGY_ORB_EXAMPLE = "assets/img/cards/orb_512.png";
+    private static final String ATTACK_PORT_EXAMPLE = "assets/img/cards/bg_attack_1024.png";
+    private static final String SKILL_PORT_EXAMPLE = "assets/img/cards/bg_skill_1024.png";
+    private static final String POWER_PORT_EXAMPLE = "assets/img/cards/bg_power_1024.png";
+    private static final String ENERGY_ORB_PORT_EXAMPLE = "assets/img/cards/orb_1024.png";
+    private static final String ENERGY_ORB_CARD_EXAMPLE = "assets/img/cards/orb_ui.png";
 
-    public Main(){
+    public Main() {
         BaseMod.subscribe(this);
+        BaseMod.addColor(
+                // ã‚«ãƒ©ãƒ¼è¿½åŠ éƒ¨åˆ†ã§ã™ã€‚ä¸Šã§è¨­å®šã—ãŸå¤‰æ•°ã‚’å…¥ã‚Œã¦ã„ãã ã‘ã€‚
+                AbstractCardEnum.EXAMPLE_COLOR // color
+                , EXAMPLE_COLOR_BG // bgColor
+                , EXAMPLE_COLOR_BG// backColor
+                , EXAMPLE_COLOR_BG// frameColor
+                , EXAMPLE_COLOR_BG// frameOutlineColor
+                , EXAMPLE_COLOR_BG// descBoxColor
+                , EXAMPLE_COLOR_BG // trailVfColor
+                , EXAMPLE_COLOR_BG// glowColor
+                , ATTACK_EXAMPLE// attackBg
+                , SKILL_EXAMPLE// skillBg
+                , POWER_EXAMPLE// powerBG
+                , ENERGY_ORB_EXAMPLE// energyOrb
+                , ATTACK_PORT_EXAMPLE// attackBgPortrait
+                , SKILL_PORT_EXAMPLE// skillBgPortrait
+                , POWER_PORT_EXAMPLE// powerBgPortrait
+                , ENERGY_ORB_PORT_EXAMPLE// energyOrbPortrait
+                , ENERGY_ORB_CARD_EXAMPLE// CardEnergyOrb
+        );
     }
 
-    // @SpireInitializer‚ÅCü‚µ‚½ƒNƒ‰ƒX‚Í‚±‚Ìƒƒ\ƒbƒh‚ğ’è‹`‚·‚é•K—v‚ª‚ ‚é
+    // @SpireInitializerï¿½ÅCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½Xï¿½Í‚ï¿½ï¿½Ìƒï¿½ï¿½\ï¿½bï¿½hï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½Kï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public static void initialize() {
         Main main = new Main();
     }
 
     @Override
     public void receiveEditStrings() {
-        // “Æ©’è‹`‚µ‚½Œ¾Œêƒtƒ@ƒCƒ‹‚ğ’Ç‰Á
-        // Settings.language‚É‚Í“ú–{Œê‚È‚çJPN, ‰pŒê‚È‚çENG‚ª“ü‚Á‚Ä‚¢‚é
         BaseMod.loadCustomStringsFile(CardStrings.class, "assets/loc/cards-" + Settings.language + ".json");
+        BaseMod.loadCustomStringsFile(RelicStrings.class, "assets/loc/relics-" + Settings.language + ".json");
+        BaseMod.loadCustomStringsFile(PowerStrings.class, "assets/loc/powers-" + Settings.language + ".json");
+
     }
 
     @Override
     public void receiveEditCards() {
-        // “Æ©’è‹`‚µ‚½ƒJ[ƒh‚ğ’Ç‰Á
-        BaseMod.addCard(new Flare());
+        // ï¿½Æï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½[ï¿½hï¿½ï¿½Ç‰ï¿½
+        BaseMod.addCard(new stsmodstudy.cards.Flare());
+        BaseMod.addCard(new stsmodstudy.cards.TestAttack());
+        BaseMod.addCard(new stsmodstudy.cards.TestPower());
+    }
+
+    @Override
+    public void receiveEditRelics() {
+        // ãƒ¬ãƒªãƒƒã‚¯ã®è¿½åŠ 
+        BaseMod.addRelicToCustomPool(
+                new TestRelic(),
+                AbstractCardEnum.EXAMPLE_COLOR // ã‚«ãƒ©ãƒ¼ã«å¯¾ã—ã¦è¿½åŠ ã™ã‚‹ã€‚å…±é€šãƒ¬ãƒªãƒƒã‚¯ã¯ã¾ãŸåˆ¥ã®ãƒ¡ã‚½ãƒƒãƒ‰ã«ãªã‚‹
+        );
+    }
+
+    @Override
+    public void receivePostInitialize() {
+        System.out.println("PostInitializeå‡¦ç†ãŒå®Ÿè¡Œã•ã‚Œã¾ã—ãŸï¼");
     }
 }

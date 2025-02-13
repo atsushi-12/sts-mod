@@ -2,5 +2,13 @@
   "stsmodstudy:Flare": {
     "NAME": "戦士56体",
     "DESCRIPTION": "いずこなさんが言ったんだよ(  ；´。 ｀；)ハンマー安いから"
-  }
+  },
+  "stsmodstudy:TestAttack": {
+  "NAME": "最強のカード",
+  "DESCRIPTION": "カードの説明文。!d!って書くとダメージの数値が出たりするけどそこは調べてください"
+  },
+    "stsmodstudy:TestPower": {
+      "NAME": "ゴールドブースト",
+      "DESCRIPTION": "戦闘終了時に [E] を得る。"
+    }
 }
